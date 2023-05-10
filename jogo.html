@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    #guess-input {
+      padding: 5px;
+      width: 200px;
+      margin-bottom: 10px;
+    }
+
+    #result {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Jogo de Adivinhação</h1>
+  <p>Pense em um número de 1 a 10:</p>
+  <input type="number" id="guess-input" min="1" max="10">
+  <button onclick="checkGuess()">Adivinhar</button>
+  <div id="result"></div>
+
+  <script>
+    function checkGuess() {
+      var guessInput = document.getElementById('guess-input');
+      var guess = parseInt(guessInput.value);
+
+      if (isNaN(guess) || guess < 1 || guess > 10) {
+        document.getElementById('result').textContent = 'Digite um número válido (entre 1 e 10).';
+        return;
+      }
+
+      var randomNumber = Math.floor(Math.random() * 10) + 1;
+
+      if (guess === randomNumber) {
+        document.getElementById('result').textContent = 'Parabéns! Você acertou!';
+      } else {
+        document.getElementById('result').textContent = 'Tente novamente. O número correto era ' + randomNumber + '.';
+      }
+    }
+  </script>
+</body>
+</html>
